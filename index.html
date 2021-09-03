@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 2 - Website Building</title>
+    <style>
+        body {
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        #login-container {
+            width: 460px;
+            margin: 0 auto;
+        }
+
+        form label,
+        form input {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        form input {
+            padding: 8px;
+        }
+
+        form label {
+            font-weight: bold;
+        }
+
+        form div {
+            margin: 16px 0px;
+        }
+        span {
+            position: relative;
+            float: right;
+            margin-top: -10%;
+            margin-right: 2%;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <div id="login-container">
+
+        <form>
+            <div>
+                <label for="username">Username:</label>
+                <input id="username" type="text">
+                <!-- <i id="user-icon"></i> -->
+            </div>
+
+            <div>
+                <label for="password">Password:</label>
+                <input id="password" type="password">
+                <!-- <i id="password-icon"></i> -->
+            </div>
+
+            <input id="submit" type="submit" val()="Login">
+
+        </form>
+
+
+    </div>
+
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+
+    <script>
+
+        $("#login-container").submit(function (e) {
+
+            
+            e.preventDefault();
+
+            var username = $("#username").val();
+            var password = $("#password").val();
+
+            var user = { username, password };
+
+
+            let user1 = { username: "new_user", password: "123456789" };
+
+            let enterUsername = $("<p>*please, enter username</p>");
+            let enterPasword = $("<p>*please, enter password</p>");
+            let validUsername = $("<p>*please, enter valid username</p>");
+            let validPasword = $("<p>*please, enter valid password</p>");
+            let message = $("<p>*please enter valid username and password</p>");
+            let successfulMessage = $("<p>Successful login!</p>");
+
+            if (username =="new_user" && password != "123456789" ) {
+                $("body").apend(validPasword);
+                username.border.style = "2px solid green";
+                password.border.style = "2px solid red";
+
+            } else if (username.value == "new_user" && password.value== "123456789")  {
+                $("body").apend(successfulMessage);
+                username.style.border = "2px solid green";
+                password.style.border = "2px solid green";
+
+            } else if (username.value == "" && password.value == "") {
+                $("body").apend(message);
+                username.border.style = "2px solid red";
+                password.border.style = "2px solid red";
+
+            } else if (username.value != "new_user" && password.value == "123456789") {
+                $("body").apend(validUsername);
+                username.border.style = "2px solid red";
+
+            } else  
+                $("body").apend(message);
+                username.border.style = "2px solid red";
+                password.border.style = "2px solid red";
+            
+
+        
+        });
+
+    </script>
+
+</body>
+
+</html>
