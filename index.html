@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assignment 2 - Website Building</title>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
     <style>
         body {
             box-sizing: border-box;
@@ -33,13 +36,18 @@
         form div {
             margin: 16px 0px;
         }
+
         span {
             position: relative;
             float: right;
-            margin-top: -10%;
+            margin-top: -6%;
             margin-right: 2%;
         }
-        
+
+        .iconHide {
+                visibility: hidden;
+            }
+         
     </style>
 </head>
 
@@ -72,51 +80,54 @@
 
         $("#login-container").submit(function (e) {
 
-            
+
             e.preventDefault();
 
             var username = $("#username").val();
             var password = $("#password").val();
 
-            var user = { username, password };
-
-
-           
-
             let enterUsername = $("<p>*please, enter username</p>");
             let enterPasword = $("<p>*please, enter password</p>");
             let validUsername = $("<p>*please, enter valid username</p>");
             let validPasword = $("<p>*please, enter valid password</p>");
-            let message = $("<p>*please enter valid username and password</p>");
+            let message = $("<p>*please enter username and password</p>");
             let successfulMessage = $("<p>Successful login!</p>");
+            let validMessage = $("<p>*please enter valid username and password</p>");
 
-            if (username =="new_user" && password != "123456789" ) {
+            let correctIcon = $('<span class="material-icons " style="color: green;">done</span>');
+            let deniedIcon = $('<span class="material-icons" style="color: red;">close</span>');
+            
+
+
+            if (username == "new_user" && password != "123456789") {
                 $("#login-container").append(validPasword);
-                $("#username").css('border', '2px solid green');
-                $("#password").css('border', '2px solid red');
+                $("#username").css('border', '2px solid green').after(correctIcon);
+                $("#password").css('border', '2px solid red').after(deniedIcon);
 
-            } else if (username === "new_user" && password == "123456789")  {
+            } else if (username === "new_user" && password == "123456789") {
+                
                 $("#login-container").append(successfulMessage);
-                $("#username").css( 'border', '2px solid green');
-                $("#password").css('border', '2px solid green');
+                $("#username").css('border', '2px solid green').after(correctIcon);
+                $("#password").css('border', '2px solid green').after(correctIcon);
 
-            } else if (username== "" && password== "") {
+            } else if (username == "" && password == "") {
                 $("#login-container").append(message);
-                $("#username").css( 'border', '2px solid red');
-                $("#password").css('border', '2px solid red');
+                $("#username").css('border', '2px solid red').after(deniedIcon);
+                $("#password").css('border', '2px solid red').after(deniedIcon);
 
-            } else if (username != "new_user" && password== "123456789") {
+            } else if (username != "new_user" && password == "123456789") {
                 $("#login-container").append(validUsername);
-                $("#username").css( 'border', '2px solid red');
+                $("#username").css('border', '2px solid red').after(deniedIcon);
 
-            } else  {
-                $("#login-container").append(message);
-                $("#username").css( 'border', '2px solid red');
-                $("#password").css('border', '2px solid red');
+            } else {
+                $("#login-container").append(validMessage);
+                $("#username").css('border', '2px solid red').after(deniedIcon);
+                $("#password").css('border', '2px solid red').after(deniedIcon);
             }
 
 
-        
+
+
         });
 
     </script>
