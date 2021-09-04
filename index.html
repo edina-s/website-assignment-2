@@ -51,13 +51,11 @@
             <div>
                 <label for="username">Username:</label>
                 <input id="username" type="text">
-                <!-- <i id="user-icon"></i> -->
             </div>
 
             <div>
                 <label for="password">Password:</label>
                 <input id="password" type="password">
-                <!-- <i id="password-icon"></i> -->
             </div>
 
             <input id="submit" type="submit" val()="Login">
@@ -83,7 +81,7 @@
             var user = { username, password };
 
 
-            let user1 = { username: "new_user", password: "123456789" };
+           
 
             let enterUsername = $("<p>*please, enter username</p>");
             let enterPasword = $("<p>*please, enter password</p>");
@@ -93,29 +91,30 @@
             let successfulMessage = $("<p>Successful login!</p>");
 
             if (username =="new_user" && password != "123456789" ) {
-                $("body").apend(validPasword);
-                username.border.style = "2px solid green";
-                password.border.style = "2px solid red";
+                $("#login-container").append(validPasword);
+                $("#username").css('border', '2px solid green');
+                $("#password").css('border', '2px solid red');
 
-            } else if (username.value == "new_user" && password.value== "123456789")  {
-                $("body").apend(successfulMessage);
-                username.style.border = "2px solid green";
-                password.style.border = "2px solid green";
+            } else if (username === "new_user" && password == "123456789")  {
+                $("#login-container").append(successfulMessage);
+                $("#username").css( 'border', '2px solid green');
+                $("#password").css('border', '2px solid green');
 
-            } else if (username.value == "" && password.value == "") {
-                $("body").apend(message);
-                username.border.style = "2px solid red";
-                password.border.style = "2px solid red";
+            } else if (username== "" && password== "") {
+                $("#login-container").append(message);
+                $("#username").css( 'border', '2px solid red');
+                $("#password").css('border', '2px solid red');
 
-            } else if (username.value != "new_user" && password.value == "123456789") {
-                $("body").apend(validUsername);
-                username.border.style = "2px solid red";
+            } else if (username != "new_user" && password== "123456789") {
+                $("#login-container").append(validUsername);
+                $("#username").css( 'border', '2px solid red');
 
             } else  {
-                $("body").apend(message);
-                username.border.style = "2px solid red";
-                password.border.style = "2px solid red";
+                $("#login-container").append(message);
+                $("#username").css( 'border', '2px solid red');
+                $("#password").css('border', '2px solid red');
             }
+
 
         
         });
